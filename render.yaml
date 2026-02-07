@@ -1,21 +1,25 @@
-$schema: "https://render.com/schema/render.yaml.json"
-# Docs: https://render.com/docs/blueprint-spec
 services:
   - type: web
     runtime: image
     name: ss-gtm-preview
     image:
       url: gcr.io/cloud-tagging-10302018/gtm-cloud-image:stable
+    region: frankfurt
+    plan: free
     healthCheckPath: /healthy
     envVars:
       - key: RUN_AS_PREVIEW_SERVER
         value: "true"
+      # CONTAINER_CONFIG — додати в Render Dashboard як Secret
   - type: web
     runtime: image
     name: ss-gtm
     image:
       url: gcr.io/cloud-tagging-10302018/gtm-cloud-image:stable
+    region: frankfurt
+    plan: free
     healthCheckPath: /healthy
     envVars:
       - key: PREVIEW_SERVER_URL
         value: https://ss-gtm-preview.onrender.com
+      # CONTAINER_CONFIG — додати в Render Dashboard як Secret
