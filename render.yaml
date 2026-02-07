@@ -4,7 +4,6 @@ services:
     name: ss-gtm-preview
     image:
       url: gcr.io/cloud-tagging-10302018/gtm-cloud-image:stable
-    numInstances: 1
     healthCheckPath: /healthy
     envVars:
       - key: RUN_AS_PREVIEW_SERVER
